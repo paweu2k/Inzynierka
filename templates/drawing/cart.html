@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Summary</title>
+    <link rel="stylesheet" href="{% static 'css/cart_styles.css' %}">
+
+    <script defer src="static/js/cart/routers.js"></script>
+    <script defer src="static/js/cart/switches.js"></script>
+    <script defer src="static/js/cart/desks.js"></script>
+    <script defer src="static/js/cart/ethernet.js"></script>
+    <script defer src="static/js/cart/game_console.js"></script>
+    <script defer src="static/js/cart/office_supplies.js"></script>
+    <script defer src="static/js/cart/tvs.js"></script>
+    <script defer src="static/js/cart/workstations.js"></script>
+    <script defer src="static/js/cart/printers.js"></script>
+    <script defer src="static/js/cart/cable.js"></script>
+    <script defer src="static/js/cart/total_price.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
+    <script defer src="static/js/cart/download_summary.js"></script>
+
+
+</head>
+
+<body>
+
+    <div id="products-container">
+        <table id="summaryTable">
+            <thead>
+                <tr>
+                    <th>Item Category</th>
+                    <th>Items</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody id="deskSection">
+                <!-- Tutaj będą wiersze dla biurek -->
+            </tbody>
+            <tbody id="ethernetSection">
+                <!-- Tutaj będą wiersze dla gniazdek -->
+            </tbody>
+            <tbody id="consoleSection">
+                <!-- Tutaj będą wiersze dla konsoli -->
+            </tbody>
+            <tbody id="printerSection">
+                <!-- Tutaj będą wiersze dla drukarek -->
+            </tbody>
+            <tbody id="routerSection">
+                <!-- Tutaj będą wiersze dla routerów -->
+            </tbody>
+            <tbody id="switchSection">
+                <!-- Tutaj będą wiersze dla switchy -->
+            </tbody>
+            <tbody id="officeSuppliesSection">
+                <!-- Tutaj będą wiersze dla akcesriów biurowych -->
+            </tbody>
+            <tbody id="tvSection">
+                <!-- Tutaj będą wiersze dla tv-->
+            </tbody>
+            <tbody id="workstationSection">
+                <!-- Tutaj będą wiersze dla stacji graficznych-->
+            </tbody>
+            <tbody id="cableSection">
+                <!-- Tutaj będą wiersze dla stacji graficznych-->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Desk Modal -->
+    <div id="deskModal" onclick="closeDeskModal(event)">
+        <div id="deviceContent" onclick="stopPropagation(event)">
+            <div id="deskList"></div>
+            <div id="deskDescription"></div>
+            <div class="button-container">
+                <button id="accept" onclick="acceptDesk()">Accept</button>
+                <button id="cancel" onclick="noChoiceDesk()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ethernet Modal -->
+    <div id="ethernetModal" onclick="closeEthernetModal(event)">
+        <div id="deviceContent" onclick="stopPropagation(event)">
+            <div id="ethernetList"></div>
+            <div id="ethernetDescription"></div>
+            <div class="button-container">
+                <button id="accept" onclick="acceptEthernet()">Accept</button>
+                <button id="cancel" onclick="noChoiceEthernet()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Console Modal -->
+    <div id="consoleModal" onclick="closeConsoleModal(event)">
+        <div id="deviceContent" onclick="stopPropagation(event)">
+            <div id="consoleList"></div>
+            <div id="consoleDescription"></div>
+            <div class="button-container">
+                <button id="accept" onclick="acceptConsole()">Accept</button>
+                <button id="cancel" onclick="noChoiceConsole()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Office Supplies Modal -->
+    <div id="officeSuppliesModal" onclick="closeOfficeSuppliesModal(event)">
+        <div id="deviceContent" onclick="stopPropagation(event)">
+            <div id="officeSuppliesList"></div>
+            <div id="officeSuppliesDescription"></div>
+            <div class="button-container">
+                <button id="accept" onclick="acceptOfficeSupplies()">Accept</button>
+                <button id="cancel" onclick="noChoiceOfficeSupplies()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Printer Modal -->
+    <div id="printerModal" onclick="closePrinterModal(event)">
+        <div id="deviceContent" onclick="stopPropagation(event)">
+            <div id="printerList"></div>
+            <div id="printerDescription"></div>
+            <div class="button-container">
+                <button id="accept" onclick="acceptPrinter()">Accept</button>
+                <button id="cancel" onclick="noChoicePrinter()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Router Modal -->
+    <div id="routerModal" onclick="closeRouterModal(event)">
+        <div id="deviceContent" onclick="stopPropagation(event)">
+            <div id="routerList"></div>
+            <div id="routerDescription"></div>
+            <div class="button-container">
+                <button id="accept" onclick="acceptRouter()">Accept</button>
+                <button id="cancel" onclick="noChoiceRouter()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Switch Modal -->
+    <div id="switchModal" onclick="closeSwitchModal(event)">
+        <div id="deviceContent" onclick="stopPropagation(event)">
+            <div id="switchList"></div>
+            <div id="switchDescription"></div>
+            <div class="button-container">
+                <button id="accept" onclick="acceptSwitch()">Accept</button>
+                <button id="cancel" onclick="noChoiceSwitch()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TV Modal -->
+    <div id="tvModal" onclick="closeTVModal(event)">
+        <div id="deviceContent" onclick="stopPropagation(event)">
+            <div id="tvList"></div>
+            <div id="tvDescription"></div>
+            <div class="button-container">
+                <button id="accept" onclick="acceptTV()">Accept</button>
+                <button id="cancel" onclick="noChoiceTV()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Workstation Modal -->
+    <div id="workstationModal" onclick="closeWorkstationModal(event)">
+        <div id="deviceContent" onclick="stopPropagation(event)">
+            <div id="workstationList"></div>
+            <div id="workstationDescription"></div>
+            <div class="button-container">
+                <button id="accept" onclick="acceptWorkstation()">Accept</button>
+                <button id="cancel" onclick="noChoiceWorkstation()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cable Modal -->
+    <div id="cableModal" onclick="closeCableModal(event)">
+        <div id="deviceContent" onclick="stopPropagation(event)">
+            <div id="cableList"></div>
+            <div id="cableDescription"></div>
+            <div class="button-container">
+                <button id="accept" onclick="acceptCable()">Accept</button>
+                <button id="cancel" onclick="noChoiceCable()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div id="summary">
+        <div id="totalPrice"><b>Total price: 0 zł</b></div>
+        <button id="downloadBtn"><b>Download Summary</b></button>
+    </div>
+
+</body>
+
+</html>

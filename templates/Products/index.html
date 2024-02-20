@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Home - Building Schematics App</title>
+    <link rel="stylesheet" href="{% static 'css/home_styles.css' %}">
+</head>
+<body>
+
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }} alert-dismissible fade show alerts" role="alert">
+    <strong>Message:</strong> {{ message }}
+    <span aria-hidden="true">&times;</span>
+</div>
+{% endfor %}
+
+<h1 style="color:white;">Welcome to the Building Schematics App</h1>
+
+{% if user.is_authenticated %}
+<h3> Hello {{ user.first_name }}</h3>
+<h4>You're successfully logged in. Do You want to sign out?</h4>
+<button type="submit" id="btn"><a href="/signout">SignOut</a></button>
+
+<h4>Or maybe you want to go back to drawing??</h4>
+<button type="submit" id="btn"><a href="/drawing">Back to drawing</a></button>
+
+{% else %}
+
+<h4>Transform your visions into reality with our advanced application for network and IT infrastructure design! <br>
+    Sign up today and gain access to intuitive tools for drawing building schematics, designing networks, selecting devices, and precise cost estimating.<br>
+    Discover how easily you can create, modify, and enhance your projects, sharing them with industry peers. Join us and be at the forefront of technological innovation</h4>
+<br><br><br>
+    <h4>If you don't have an account yet, create one now to start exploring our advanced features.</h4>
+
+    <button type="submit" id="btn"><a href="/signup">SignUp</a></button>
+
+    <h4>Already have an account? Log in to continue your journey with us.</h4>
+
+    <button type="submit" id="btn" style="margin-left:10px;"><a href="/signin">SignIn</a></button><
+
+
+{% endif %}
+
+<footer>
+    <p>&copy; 2024 by Paweł Głodzik</p>
+</footer>
+</body>
+</html>

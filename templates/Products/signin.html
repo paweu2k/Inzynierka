@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Signin</title>
+    <link rel="stylesheet" href="static/css/styles.css">
+</head>
+<body>
+
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }} alert-dismissible fade show alerts" role="alert">
+
+    <strong>Message:"</strong> {{ message }}
+    <span aria-hidden="true">&times</span>
+
+</div>
+{% endfor %}
+
+
+
+    <form action="/signin" method="post">
+    {% csrf_token %}
+        <div id="main-container" class="centered-flex">
+        <div class="form-container">
+            <div class="icon centered-flex"><i class="fa fa-user"></i></div>
+            <div class="title">LOGIN</div>
+            <form id="login-form" class="centered-flex">
+                <div class="msg"></div>
+                <div class="field">
+                    <input type="text" id="username" name="username" placeholder="Username">
+                    <i class="fa fa-user"></i>
+                </div>
+                <div class="field">
+                    <input type="password" id="pass1" name="pass1" placeholder="Password">
+                    <i class="fa fa-lock"></i>
+                </div>
+
+                <div class="btn-container"><button type="submit" id="btn">Login</button></div>
+                <div class="signup">Don't have an Account?<a href="signup"> Sign up</a></div>
+            </form>
+        </div>
+        </div>
+    </form>
+
+<script src="static/js/sing_in_script.js"></script>
+
+
+</body>
+</html>

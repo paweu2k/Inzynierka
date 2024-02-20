@@ -1,0 +1,187 @@
+body {
+  margin: auto;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: black;
+  font-family: Times New Roman;
+}
+
+#title {
+  width: 100%;
+  /* Ustaw szerokość na 100% kontenera */
+  text-align: center;
+  /* Wyśrodkuj tekst poziomo */
+  color: white;
+  /* Ustaw kolor tekstu */
+  margin-top: 10px;
+  /* Dodaj górny margines, jeśli jest potrzebny */
+}
+
+.canvas-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 90vh;
+  margin: auto;
+  position: relative;
+}
+
+.label {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 5px;
+  border-radius: 5px;
+  color: black;
+  pointer-events: none;
+  margin-left: 140px;
+}
+
+#deleteButton.active {
+  cursor: crosshair;
+  border-radius: 10px;
+}
+
+#button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 10px;
+  margin-top: 10px;
+  margin-right: 10px;
+  border-radius: 15px;
+}
+
+#button-container button {
+  width: 100px;
+  height: 80px;
+  margin-bottom: 15px;
+  margin-right: 10px;
+  margin-left: 10px;
+  font-size: 1.2em;
+  font-family: Times New Roman;
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+  box-shadow: 0 0 10px white;
+  cursor: pointer;
+}
+
+#products-container toolbox-item {
+  width: 120px;
+  height: 120px;
+  margin-bottom: 5px;
+  font-size: 1em;
+  position: relative;
+}
+
+#products-container {
+  height: 90vh;
+  /* ustaw wysokość równą wysokości obszaru roboczego canvas */
+  overflow-y: auto;
+  /* włącz przewijanie pionowe, gdy zawartość przekracza wysokość */
+}
+
+/* Styl całego paska przewijania */
+#products-container::-webkit-scrollbar {
+  width: 10px;
+  /* szerokość paska przewijania */
+}
+
+/* Styl tła paska przewijania (ścieżki) */
+#products-container::-webkit-scrollbar-track {
+  background: transparent;
+  /* tło ścieżki przewijania */
+  border-radius: 10px;
+  /* zaokrąglenie krawędzi ścieżki */
+}
+
+/* Styl przewijanej części paska (kciuka) */
+#products-container::-webkit-scrollbar-thumb {
+  background: white;
+  /* kolor kciuka */
+  border-radius: 10px;
+  /* zaokrąglenie krawędzi kciuka */
+}
+
+/* Styl kciuka paska przewijania podczas najechania kursorem */
+#products-container::-webkit-scrollbar-thumb:hover {
+  background: #b3b3b3;
+  /* ciemniejszy kolor kciuka podczas najechania */
+}
+
+#myCanvas {
+  background: linear-gradient(to right,
+      rgba(0, 0, 0, 0.1) 2px,
+      transparent 2px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 2px, transparent 2px);
+  background-size: 20px 20px;
+  border: 1px solid black;
+  background-color: lightgrey;
+}
+
+.toolbox-item {
+  color: #fff;
+  margin: 5px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+p {
+  color: #fff;
+  text-align: center;
+}
+
+.red-border {
+  border: 6px solid red;
+  box-shadow: 0 0 30px red;
+}
+
+.text-shadow {
+  text-shadow: 3px 3px 10px red;
+  /* Cień tekstu: przesunięcie x, przesunięcie y, rozmycie, kolor */
+  color: white;
+}
+
+#instructionButton {
+    position: fixed;
+    left: 20px;
+    top: 20px;
+    font-size: 40px;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+#instructionButton:hover {
+    transform: scale(1.6);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #000;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    color: white;
+}
+
+li {
+    margin-bottom: 10px; /* Dodaje odstęp na dole każdego elementu <li> */
+}

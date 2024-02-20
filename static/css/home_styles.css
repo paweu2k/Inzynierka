@@ -1,0 +1,47 @@
+body {
+    background: #000000;
+    margin: 0;
+    text-align: center;
+}
+
+#btn {
+    padding: 5px 20px;
+    border: none;
+    background: rgb(25, 62, 97);
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+    border-radius: 15px;
+    transition: .3s;
+    margin: 25px 0;
+}
+
+h1 {
+    color: white;
+    font-size: 40px;
+}
+
+h4 {
+    color: white;
+    font-size: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+#middle {
+    color: white;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+
+}
